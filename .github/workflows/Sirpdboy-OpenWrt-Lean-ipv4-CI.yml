@@ -3,7 +3,7 @@
 # Author: sirpdboy
 # https://github.com/sirpdboy/Openwrt
 
-name: Sirpdboy-OpenWrt-Lean-ipv6-mini-CI
+name: Sirpdboy-OpenWrt-Lean-ipv4-mini-CI
 on:
   schedule:
     - cron: 0 20 * * *
@@ -94,10 +94,10 @@ jobs:
         # CONFIG_VMDK_IMAGES is not set
         EOF
         # IPv6支持:
-        cat >> .config <<EOF 
-        CONFIG_PACKAGE_dnsmasq_full_dhcpv6=y
-        CONFIG_PACKAGE_ipv6helper=y
-        EOF 
+        # cat >> .config <<EOF 
+        # CONFIG_PACKAGE_dnsmasq_full_dhcpv6=y
+        # CONFIG_PACKAGE_ipv6helper=y
+        # EOF 
         # 多文件系统支持:
         cat >> .config <<EOF
         CONFIG_PACKAGE_kmod-fs-nfs=y
@@ -129,7 +129,7 @@ jobs:
         # CONFIG_PACKAGE_luci-app-accesscontrol is not set
         CONFIG_PACKAGE_luci-app-adbyby-plus=m
         # CONFIG_PACKAGE_luci-app-ipsec-vpnd is not set
-        CONFIG_PACKAGE_luci-app-nlbwmon=y
+        CONFIG_PACKAGE_luci-app-nlbwmon=m
         # CONFIG_PACKAGE_luci-app-unblockmusic is not set
         CONFIG_PACKAGE_luci-app-vlmcsd=y
         # CONFIG_PACKAGE_luci-app-vsftpd is not set
@@ -148,7 +148,7 @@ jobs:
         CONFIG_PACKAGE_luci-app-koolproxyR=y
         CONFIG_PACKAGE_luci-app-minidlna=m
         CONFIG_PACKAGE_luci-app-mwan3=y
-        CONFIG_PACKAGE_luci-app-netdata=m
+        CONFIG_PACKAGE_luci-app-netdata=y
         CONFIG_PACKAGE_luci-app-oaf=y
         CONFIG_PACKAGE_luci-app-openclash=y
         CONFIG_PACKAGE_luci-app-passwall=y
