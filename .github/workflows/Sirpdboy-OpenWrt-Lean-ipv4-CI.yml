@@ -14,8 +14,6 @@ on:
 jobs:
 
   build:
-
-    name: Build OpenWrt and release
     runs-on: ubuntu-18.04
 
     steps:
@@ -347,16 +345,12 @@ jobs:
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
-     - name: Multi-thread  Compile Openwrt
+     - name: Compile Openwrt
        run: |
           cd openwrt
           echo -e "$(nproc) thread build."
           make -j$(nproc) || make -j1 V=s
-     - name: Single-thread  Compile Openwrt
-       if: failure()
-       run: |
-          cd openwrt
-          make -j1 V=s  
+          df -h
      - name: Prepare artifact
        run: |
         rm -rf ./Firmware/
