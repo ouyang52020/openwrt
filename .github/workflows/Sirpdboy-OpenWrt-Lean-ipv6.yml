@@ -360,7 +360,7 @@ jobs:
         cd openwrt
         make -j8 download
         find ./dl/ -size -1024c -exec rm -f {} \;
-     - name: Multi-thread  Compile Openwrt
+     - name: Compile Openwrt
        run: |
           cd openwrt
           echo -e "$(nproc) thread build."
