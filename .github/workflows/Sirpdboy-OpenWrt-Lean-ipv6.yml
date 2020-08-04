@@ -128,7 +128,7 @@ jobs:
         CONFIG_PACKAGE_autosamba=y
         CONFIG_PACKAGE_luci-app-samba=y
         # CONFIG_PACKAGE_luci-app-accesscontrol is not set
-        # CONFIG_PACKAGE_luci-app-adbyby-plus is not set
+        CONFIG_PACKAGE_luci-app-adbyby-plus=y
         CONFIG_PACKAGE_luci-app-adguardhome=y
         CONFIG_PACKAGE_luci-app-advanced=y
         CONFIG_PACKAGE_luci-app-aria2=y
@@ -154,7 +154,7 @@ jobs:
         CONFIG_PACKAGE_luci-app-minidlna=y
         CONFIG_PACKAGE_luci-app-mwan3=y
         CONFIG_PACKAGE_luci-app-netdata=y
-        CONFIG_PACKAGE_luci-app-nlbwmon=y
+        CONFIG_PACKAGE_luci-app-nlbwmon=m
         CONFIG_PACKAGE_luci-app-oaf=y
         CONFIG_PACKAGE_luci-app-openclash=y
         CONFIG_PACKAGE_luci-app-passwall=y
