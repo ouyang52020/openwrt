@@ -14,6 +14,7 @@ mv ./feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_system/poweroff.ht
 mv ./feeds/luci/modules/luci-mod-admin-full/luasrc/controller/admin/system.lua   ../bak
 mv ./package/lean/default-settings/files/zzz-default-settings   ../bak
 mv ./package/lean/autocore/files/index.htm  ../bak
+rm ./feeds/packages/admin/netdata/
 sed -i 's/= "unreachable"/= "default"/g' feeds/luci/applications/luci-app-mwan3/luasrc/model/cbi/mwan/policyconfig.lua
 sed -i 's/带宽监控/监控/g' feeds/luci/applications/luci-app-nlbwmon/po/zh-cn/nlbwmon.po
 wget -P  ./feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_system https://raw.githubusercontent.com/siropboy/other/master/patch/poweroff/poweroff.htm 
@@ -31,6 +32,7 @@ wget -P package/lean/autocore/files  https://raw.githubusercontent.com/siropboy/
 #wget -P package/lean/autocore/files https://raw.githubusercontent.com/siropboy/other/master/patch/autocore/files/sbin/cpuinfo
 sed -i '/DISTRIB_REVISION/d' ./package/base-files/files/etc/openwrt_release
 echo "DISTRIB_REVISION='S$(date +%Y.%m.%d) Sirpdboy'" >> ./package/base-files/files/etc/openwrt_release
+wget  feeds/packages/admin/netdata  https://raw.githubusercontent.com/siropboy/other/master/patch/netdata
 ./scripts/feeds install -a
 cd ../
 exit 0
