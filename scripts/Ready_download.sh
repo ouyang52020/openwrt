@@ -14,7 +14,6 @@ mv ./feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_system/poweroff.ht
 mv ./feeds/luci/modules/luci-mod-admin-full/luasrc/controller/admin/system.lua   ../bak
 mv ./package/lean/default-settings/files/zzz-default-settings   ../bak
 mv ./package/lean/autocore/files/index.htm  ../bak
-mv ./package/lean/autocore/files/cpuinfo  ../bak
 sed -i 's/= "unreachable"/= "default"/g' feeds/luci/applications/luci-app-mwan3/luasrc/model/cbi/mwan/policyconfig.lua
 sed -i 's/带宽监控/监控/g' feeds/luci/applications/luci-app-nlbwmon/po/zh-cn/nlbwmon.po
 wget -P  ./feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_system https://raw.githubusercontent.com/siropboy/other/master/patch/poweroff/poweroff.htm 
