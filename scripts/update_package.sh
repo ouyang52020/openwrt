@@ -11,6 +11,7 @@ sed -i '/firewall/d' package/new/luci-app-beardropper/root/etc/uci-defaults/luci
 mv package/new/luci-app-beardropper/po/zh_Hans   package/new/luci-app-beardropper/po/zh-cn
 rm -rf ./package/lean/luci-theme-argon
 rm -rf ./package/lean/trojan
+rm -rf ./package/lean/v2ray
 rm -rf ./package/lean/luci-theme-opentomcat
 svn co https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus package/new/luci-app-ssr-plus
 git clone -b master --single-branch https://github.com/tty228/luci-app-serverchan package/new/luci-app-serverchan
