@@ -11,7 +11,7 @@ sed -i '/firewall/d' package/new/luci-app-beardropper/root/etc/uci-defaults/luci
 mv package/new/luci-app-beardropper/po/zh_Hans   package/new/luci-app-beardropper/po/zh-cn
 rm -rf ./package/lean/luci-theme-argon
 rm -rf ./package/lean/trojan
-rm -rf ./package/lean/v2ray
+# rm -rf ./package/lean/v2ray
 rm -rf ./package/lean/luci-theme-opentomcat
 rm -rf ./package/lean/luci-app-netdata
 svn co https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus package/new/luci-app-ssr-plus
