@@ -30,8 +30,8 @@ sed -i '/filter_aaaa/d' package/network/services/dnsmasq/files/dhcp.conf
 sed -i 's/$(VERSION_DIST_SANITIZED)/$(shell date +%Y%m%d)-$(VERSION_DIST_SANITIZED)/g' include/image.mk
 wget -P package/lean/autocore/files  https://raw.githubusercontent.com/siropboy/other/master/patch/autocore/files/index.htm
 #wget -P package/lean/autocore/files https://raw.githubusercontent.com/siropboy/other/master/patch/autocore/files/sbin/cpuinfo
-sed -i '/DISTRIB_REVISION/d' ./package/base-files/files/etc/openwrt_release
-echo "DISTRIB_REVISION='S$(date +%Y.%m.%d) Sirpdboy'" >> ./package/base-files/files/etc/openwrt_release
+#sed -i '/DISTRIB_REVISION/d' ./package/base-files/files/etc/openwrt_release
+echo "DISTRIB_REVISION='S$(date +%Y.%m.%d) Sirpdboy'" > ./package/base-files/files/etc/openwrt_release1
 svn co https://github.com/siropboy/other/trunk/patch/netdata feeds/packages/admin/netdata 
 ./scripts/feeds install -a
 cd ../
