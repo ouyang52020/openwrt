@@ -169,6 +169,7 @@ jobs:
         CONFIG_PACKAGE_luci-app-transmission=y
         CONFIG_PACKAGE_luci-app-ttyd=y
         CONFIG_PACKAGE_luci-app-usb-printer=y
+        CONFIG_PACKAGE_luci-app-pptp-vpnserver-manyusers=y
         CONFIG_PACKAGE_luci-app-vlmcsd=y
         CONFIG_PACKAGE_luci-app-vsftpd=y
         CONFIG_PACKAGE_luci-app-vssr=y
