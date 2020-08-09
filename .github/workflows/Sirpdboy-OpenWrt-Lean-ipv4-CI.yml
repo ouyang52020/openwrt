@@ -6,7 +6,7 @@
 name: Sirpdboy-OpenWrt-Lean-ipv4-mini-CI
 on:
   schedule:
-    - cron: 0 20 * * *
+    - cron: 0 1 * * *
   push:
     tags:
       - '*'
@@ -37,7 +37,7 @@ jobs:
      - name: Prepare openwrt
        run: |
         sudo chown -R runner:runner /home/runner/work/openwrt
-        cp -r ./scripts/Ready_download.sh  ./ &&  /bin/bash Ready_download.sh 
+        cp -r ./scripts/Ready_download.sh  ./ &&  /bin/bash ready_download.sh 
      - name: Prepare Package
        run: |
         cd openwrt
