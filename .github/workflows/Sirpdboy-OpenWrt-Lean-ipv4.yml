@@ -384,10 +384,10 @@ jobs:
      - name: Upload Firmware
        uses: actions/upload-artifact@main
        with:
-          name: SirpdboyOpenWrt-IPV6-Firmware
+          name: SirpdboyOpenWrt-IPV4-Firmware
           path: ./Firmware/
      - name: Upload  IPK
        uses: actions/upload-artifact@main
        with:
-          name: SirpdboyOpenWrt-IPV6-Ipk
+          name: SirpdboyOpenWrt-IPV4-Ipk
           path: ./openwrt/bin/packages/
