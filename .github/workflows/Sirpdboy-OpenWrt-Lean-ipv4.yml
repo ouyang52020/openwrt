@@ -28,25 +28,21 @@ jobs:
        env:
         DEBIAN_FRONTEND: noninteractive
        run: |
-          sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
-          docker container stop $(docker container ls -a -q) && docker system prune --all --force --volumns
-          sudo -E apt-get -y purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* mysql* php* docker*
-          sudo -E apt-get -qq update
-          sudo -E apt-get -qq install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib g++-multilib p7zip p7zip-full msmtp libssl-dev texinfo libreadline-dev libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint ccache curl wget vim nano python python3 python-pip python3-pip python-ply python3-ply haveged lrzsz device-tree-compiler scons antlr3 gperf ecj fastjar mkisofs
-          sudo -E apt-get -qq autoremove --purge
-          sudo timedatectl set-timezone "$TZ"
-          sudo -E apt-get -qq clean
-          sudo ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-     - name: Prepare Openwrt
+         bash <(curl -fsSL https://raw.githubusercontent.com/siropboy/other/master/patch/script/init_build.sh)
+         
+     - name: Prepare openwrt
        run: |
-        sudo chown -R runner:runner /home/runner/work/openwrt
-        cp -r ./scripts/ready_download.sh ./  &&/bin/bash ready_download.sh
+         git clone https://github.com/coolsnowwolf/lede openwrt
+         cd openwrt
+         ./scripts/feeds update -a
+         
      - name: Prepare Package
        run: |
         cd openwrt
-        cp -r ../scripts/update_package.sh ./ &&/bin/bash update_package.sh
-        chmod -R 755 ./
-        df -h
+        bash <(curl -fsSL https://raw.githubusercontent.com/siropboy/other/master/patch/script/update_package.sh)
+        ./scripts/feeds install -a
+        sudo df -h
+        
      - name: Generate Configuration File
        run: |
         cd openwrt
@@ -356,11 +352,13 @@ jobs:
         # 
         sed -i 's/^[ \t]*//g' ./.config
         make defconfig
+        
      - name: Make Download
        run: |
         cd openwrt
         make -j8 download
         find ./dl/ -size -1024c -exec rm -f {} \;
+        
      - name: Compile Openwrt
        run: |
           cd openwrt
@@ -374,6 +372,7 @@ jobs:
           du -h --max-depth=1 ./ --exclude=build_dir --exclude=bin
           du -h --max-depth=1 ./build_dir
           du -h --max-depth=1 ./bin
+          
      - name: Prepare Artifact
        run: |
         rm -rf ./Firmware/
@@ -382,6 +381,7 @@ jobs:
         find openwrt/bin/targets/ -name "*combined*img*" | xargs -i mv -f {} ./Firmware/
         cd ./Firmware
         gzip *.img
+        
      - name: Upload Firmware
        uses: actions/upload-artifact@main
        with:
