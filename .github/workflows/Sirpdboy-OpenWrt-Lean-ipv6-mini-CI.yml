@@ -166,10 +166,10 @@ jobs:
         CONFIG_PACKAGE_luci-theme-btmod=y
         EOF
         # 常用软件包:
-        # cat >> .config <<EOF
-        # CONFIG_PACKAGE_curl=y
-        # CONFIG_PACKAGE_wget=y
-        # EOF
+        cat >> .config <<EOF
+        CONFIG_PACKAGE_curl=y
+        CONFIG_PACKAGE_wget=y
+        EOF
         # 驱动Network Devices:
         cat >> .config <<EOF
         CONFIG_PACKAGE_r8169-firmware=y
